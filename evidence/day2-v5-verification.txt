@@ -1,0 +1,34 @@
+DATABASE WEEK 8 - REAL-TIME ANALYTICS PLATFORM
+DAY 2 - V5 SEED DEMO DATA VERIFICATION
+
+Migration:
+V5__seed_demo_data.sql
+
+Flyway result:
+Successfully validated 5 migrations.
+Successfully applied 1 migration.
+Current schema version: 5.
+
+Verified demo data:
+- Acme Analytics: 3 users, 8 events.
+- Blue Sky Retail: 2 users, 7 events.
+- Two active subscriptions.
+- Acme Analytics payment: USD 99.00.
+- Blue Sky Retail payment: USD 29.00.
+
+Payment verification SQL:
+SELECT t.tenant_name, SUM(pay.amount) AS total_paid, pay.currency
+FROM payments pay
+JOIN subscriptions s ON s.subscription_id = pay.subscription_id
+JOIN tenants t ON t.tenant_id = s.tenant_id
+WHERE t.tenant_name IN ('Acme Analytics', 'Blue Sky Retail')
+GROUP BY t.tenant_name, pay.currency
+ORDER BY t.tenant_name;
+
+Result:
+Acme Analytics  | 99.00 | USD
+Blue Sky Retail | 29.00 | USD
+
+Conclusion:
+V5 migration was successful. Demo organisations, users, activity events,
+subscriptions, and payments were inserted and verified.

@@ -1,0 +1,10 @@
+# Keep database backups private
+backups/
+
+# Protect credentials
+.env
+.env.*
+
+# Ignore Python temporary files
+__pycache__/
+*.pyc

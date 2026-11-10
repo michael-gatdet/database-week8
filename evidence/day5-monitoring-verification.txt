@@ -1,0 +1,19 @@
+DAY 5 - MONITORING EVIDENCE
+
+Prometheus: 3.16.0
+PostgreSQL Exporter: 0.20.1
+Grafana: 13.3.0
+PostgreSQL: 18.6
+
+Verification:
+- PostgreSQL health metric pg_up = 1
+- PostgreSQL exporter scrape error = 0
+- Prometheus PostgreSQL target = UP
+- Grafana Prometheus data source = Connected
+- Six custom Grafana dashboards saved.
+
+Screenshot:
+day5-grafana-dashboards.png
+
+Report:
+docs/day5-monitoring.md

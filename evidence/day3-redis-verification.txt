@@ -1,0 +1,33 @@
+DATABASE WEEK 8 - REAL-TIME ANALYTICS PLATFORM
+DAY 3 - REDIS STREAMS VERIFICATION
+
+Redis-compatible server:
+Memurai for Redis
+
+Service status:
+Running
+
+Connection test:
+Command: memurai-cli.exe PING
+Result: PONG
+
+Stream created:
+capstone:events
+
+Event insertion:
+Command: XADD capstone:events '*' tenant_id 1 user_id 1 event_type page_view
+
+Generated event ID:
+1794297135221-0
+
+Event retrieval:
+Command: XRANGE capstone:events - +
+
+Verified event fields:
+tenant_id: 1
+user_id: 1
+event_type: page_view
+
+Conclusion:
+Redis Streams successfully accepted and returned the test event.
+The Redis ingestion buffer is working.

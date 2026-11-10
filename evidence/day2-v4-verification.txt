@@ -1,0 +1,50 @@
+﻿DATABASE WEEK 8 – CAPSTONE PROJECT
+DAY 2: V4 ROW-LEVEL SECURITY VERIFICATION
+
+Database: capstone
+Database engine: PostgreSQL 18.6
+Migration tool: Flyway 13.12.1
+
+MIGRATION RESULTS
+1. V1 core tables: Success.
+2. V2 indexes: Success.
+3. V3 audit and triggers: Success.
+4. V4 row-level security: Success.
+5. Current schema version: 4.
+
+RLS CONFIGURATION
+1. Six RLS policies created successfully.
+2. RLS enabled on tenants, users, sessions, events,
+   subscriptions, and payments.
+3. Application role: capstone_app.
+4. Application role is not a superuser.
+5. Application role cannot bypass RLS.
+6. Application role cannot log in directly.
+
+TENANT ISOLATION TEST
+
+Tenant A:
+- Tenant ID: 2
+- Visible organisation: RLS Tenant A
+- Visible user: Alice Tenant A
+- Other tenant's records were hidden.
+- Result: PASSED.
+
+Tenant B:
+- Tenant ID: 3
+- Visible organisation: RLS Tenant B
+- Visible user: Bob Tenant B
+- Other tenant's records were hidden.
+- Result: PASSED.
+
+SECURITY OBSERVATION
+The application must set the tenant context through trusted
+server-side authentication and database access controls.
+The custom app.tenant_id setting must not be trusted as
+an identity supplied directly by an end user.
+
+CONCLUSION
+V4 was successfully applied and verified.
+PostgreSQL Row-Level Security correctly filtered tenant
+records according to the configured tenant context.
+Both tenant isolation tests passed.

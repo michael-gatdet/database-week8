@@ -1,0 +1,43 @@
+DATABASE WEEK 8 - REAL-TIME ANALYTICS PLATFORM
+DAY 2 - V6 ANALYTICS MATERIALIZED VIEW VERIFICATION
+
+Migration:
+V6__analytics_views.sql
+
+Flyway result:
+Successfully validated 6 migrations.
+Successfully applied V6.
+Current schema version: 6.
+All migrations V1-V6: SUCCESS.
+
+Materialized view:
+mv_daily_event_summary
+
+Verified columns:
+- tenant_id
+- event_date
+- event_type_id
+- event_name
+- total_events
+- unique_users
+- unique_sessions
+
+Verified indexes:
+- idx_mv_daily_event_summary_key
+- idx_mv_daily_event_summary_date
+
+Verification results:
+Acme Analytics: 8 summary rows.
+Blue Sky Retail: 7 summary rows.
+Total summary rows: 15.
+
+The materialized view correctly summarises:
+- Daily event activity.
+- Event types.
+- Total events.
+- Unique users.
+- Unique sessions.
+
+Conclusion:
+V6 was successfully applied and verified.
+The materialized view contains all 15 expected demo event summaries.

@@ -1,0 +1,50 @@
+DATABASE WEEK 8 - REAL-TIME ANALYTICS PLATFORM
+DAY 4 - PERFORMANCE BENCHMARK RESULTS
+
+Database: capstone
+PostgreSQL: 18.6
+Benchmark data: 50,000 events
+Total events: 50,016
+
+TEST 1 - TENANT ACTIVITY QUERY
+Normal planner:
+Execution time: 20.368 ms
+Scan: Sequential Scan
+Rows processed: 25,009
+
+TEST 2 - CONTROLLED INDEX COMPARISON
+Sequential scans discouraged:
+Execution time: 22.310 ms
+Scan: Bitmap Heap Scan
+Index: BRIN timestamp index
+Rows processed: 25,009
+
+Note: This test did not use the tenant/timestamp B-tree index.
+
+TEST 3 - SELECTIVE TENANT QUERY
+Execution time: 0.509 ms
+Scan: B-tree Index Scan
+Index: events_2026_11_tenant_id_occurred_at_idx
+Rows returned: 299
+
+TEST 4 - NORMAL TIMESTAMP QUERY
+Execution time: 13.015 ms
+Scan: Index Only Scan
+Index: events_2026_11_redis_stream_id_occurred_at_idx
+Rows returned: 599
+Heap fetches: 0
+
+TEST 5 - CONTROLLED BRIN TEST
+Execution time: 6.908 ms
+Scan: Bitmap Heap Scan
+Index: events_2026_11_occurred_at_idx
+Rows returned: 599
+Rows removed by index recheck: 41,097
+Heap blocks: 642
+
+CONCLUSION:
+The B-tree index efficiently supports selective tenant and
+timestamp searches. The BRIN index also works for timestamp
+range searches, but requires rechecking candidate rows.
+
+PostgreSQL's normal query planner was restored after testing.

@@ -1,0 +1,16 @@
+DATABASE WEEK 8 - REAL-TIME ANALYTICS PLATFORM
+DAY 4 - BENCHMARK DATA VERIFICATION
+
+Database: capstone
+PostgreSQL: 18.6
+
+Benchmark events inserted: 50,000
+Original demo events: 16
+Total events: 50,016
+
+All 50,000 benchmark events were inserted successfully.
+The benchmark events are labelled with source = benchmark.
+The events use the November 2026 partition.
+
+RESULT:
+Benchmark data insertion completed successfully.

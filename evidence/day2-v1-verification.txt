@@ -1,0 +1,27 @@
+DATABASE WEEK 8 – CAPSTONE PROJECT
+DAY 2: V1 CORE TABLES VERIFICATION
+
+Migration file: V1__core_tables.sql
+Migration tool: Flyway 13.12.1
+Database: capstone
+Database engine: PostgreSQL 18.6
+
+VERIFICATION RESULTS
+
+1. Main database tables: Successfully created.
+2. Events table: Successfully created as a partitioned table.
+3. Partitioning method: RANGE partitioning on occurred_at.
+4. Event partitions:
+   - events_2026_11
+   - events_2026_12
+   - events_2027_01
+   - events_default
+5. Primary key: (event_id, occurred_at).
+6. Foreign keys: Successfully created.
+7. Flyway schema history: Version 1, core tables, success = true.
+
+CONCLUSION
+
+The V1 core tables migration was successfully applied and verified.
+The database is ready for the next migration, which will add indexes
+to improve query performance.

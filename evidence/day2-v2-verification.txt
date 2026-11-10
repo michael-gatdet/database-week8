@@ -1,0 +1,38 @@
+DATABASE WEEK 8 – CAPSTONE PROJECT
+DAY 2: V2 INDEXES VERIFICATION
+
+Migration file: V2__indexes.sql
+Database: capstone
+Database engine: PostgreSQL 18.6
+Migration tool: Flyway 13.12.1
+
+INDEXES CREATED
+
+1. BRIN index:
+   idx_events_occurred_at_brin
+   Purpose: Improve time-based searches on large event data.
+
+2. B-tree indexes:
+   - idx_events_tenant_time
+   - idx_events_user_time
+   - idx_events_type_time
+   - idx_events_session
+   - idx_sessions_user_started
+   - idx_subscriptions_tenant_status
+   - idx_payments_paid_at
+   - idx_payments_subscription
+
+VERIFICATION RESULTS
+
+1. Parent events table indexes: Confirmed.
+2. Event partition indexes: Confirmed.
+3. BRIN indexes: Confirmed on parent and all four partitions.
+4. Flyway V1: Success.
+5. Flyway V2: Success.
+6. Current schema version: 2.
+
+CONCLUSION
+
+The V2 indexes migration was successfully applied and verified.
+BRIN and B-tree indexes are now available to support analytical
+queries and improve data retrieval performance.

@@ -1,0 +1,14 @@
+DATABASE WEEK 8 – CAPSTONE PROJECT
+Track C: Real-Time Analytics Platform
+
+DAY 1: DATABASE ENVIRONMENT SETUP
+
+1. PostgreSQL connection: SUCCESSFUL
+2. PostgreSQL version: 18.6
+3. Database name: capstone
+4. Database owner: postgres
+5. Database creation: SUCCESSFUL
+6. Database connection: SUCCESSFUL
+7. Initial table check: No tables found (expected).
+
+The capstone database is ready for development.

@@ -1,0 +1,19 @@
+DATABASE WEEK 8 - DAY 4
+PARTITION PRUNING VERIFICATION
+
+Database: capstone
+PostgreSQL: 18.6
+
+Test:
+Selected events between November 10 and November 11, 2026.
+
+Result:
+- Partition scanned: events_2026_11
+- Rows scanned: 50,000
+- Rows removed by filter: 16
+- Execution time: 14.688 ms
+- Other partitions were skipped.
+
+Conclusion:
+PostgreSQL partition pruning is working correctly.
+Only the November 2026 partition was scanned for this date range.

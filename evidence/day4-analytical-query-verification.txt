@@ -1,0 +1,51 @@
+DATABASE WEEK 8 - REAL-TIME ANALYTICS PLATFORM
+DAY 4 - ANALYTICAL QUERY VERIFICATION
+
+File: docs/analytical-queries.sql
+Database: capstone
+PostgreSQL: 18.6
+
+RESULTS:
+
+1. DAILY ACTIVE USERS
+Successfully returned 10 tenant-day records.
+Acme Analytics and Blue Sky Retail activity was reported.
+
+2. CONVERSION FUNNEL
+Acme Analytics:
+Page views: 3 users
+Signups: 2 users
+Add to cart: 1 user
+Purchases: 1 user
+
+Blue Sky Retail:
+Page views: 2 users
+Signups: 1 user
+Add to cart: 1 user
+Purchases: 2 users
+
+Note: These are distinct-user counts for each event stage,
+not a strict ordered conversion funnel.
+
+3. COHORT RETENTION
+Acme Analytics: 100% initial-month retention.
+Blue Sky Retail: 100% initial-month retention.
+
+Note: Later-month retention requires additional monthly data.
+
+4. MONTHLY SUBSCRIPTION REVENUE
+Acme Analytics Growth plan: $99 USD.
+Blue Sky Retail Starter plan: $29 USD.
+Total revenue: $128 USD.
+
+5. POPULAR EVENTS
+Page views: 8
+Signups: 3
+Add to cart: 2
+Purchases: 3
+
+Total events: 16.
+
+FINAL RESULT:
+All five analytical SQL queries executed successfully.
+No SQL errors were reported.

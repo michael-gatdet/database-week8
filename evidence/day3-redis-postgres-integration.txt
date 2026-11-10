@@ -1,0 +1,70 @@
+DATABASE WEEK 8 - REAL-TIME ANALYTICS PLATFORM
+DAY 3 - REDIS STREAMS AND POSTGRESQL INTEGRATION
+
+Environment:
+- Operating System: Windows 11
+- Redis-compatible service: Memurai
+- Redis CLI: Memurai CLI
+- Python: 3.14.3
+- Redis Python package: 8.1.0
+- PostgreSQL: 18.6
+- Psycopg: 3.3.8
+- Flyway: 13.12.1
+
+1. REDIS CONNECTION TEST
+Command: PING
+Result: PONG
+
+2. REDIS STREAM TEST
+Stream: capstone:events:ingest
+A test event was successfully added to the stream.
+
+3. DATABASE MIGRATION
+Migration: V7__redis_stream_integration.sql
+Result: Successfully applied.
+Schema version: 7
+
+V7 added:
+- redis_stream_id column to events.
+- Unique index on (redis_stream_id, occurred_at).
+
+4. PYTHON CONSUMER TEST
+Script: scripts/redis_to_postgres.py
+Result:
+- Redis consumer group created.
+- Event 1794298027360-0 read successfully.
+- Event inserted into PostgreSQL.
+- PostgreSQL connection closed.
+
+5. POSTGRESQL VERIFICATION
+Query confirmed one event with:
+- event_id: 16
+- tenant_id: 4
+- user_id: 4
+- event_type_id: 1
+- session_id: 1
+- properties: {"device": "web", "source": "redis_stream"}
+- redis_stream_id: 1794298027360-0
+
+6. DUPLICATE PROTECTION TEST
+A second insert of the same event was attempted.
+
+Result:
+INSERT 0 0
+
+A count query returned:
+redis_stream_id: 1794298027360-0
+copies: 1
+
+Conclusion:
+The unique index successfully prevented duplicate insertion.
+
+7. DAY 3 OUTCOME
+Redis Streams and Memurai were successfully integrated with PostgreSQL using Python and Psycopg.
+
+Redis acts as an ingestion buffer. The Python consumer reads events from Redis and inserts them into PostgreSQL. Messages are acknowledged after successful database commits.
+
+The unique index provides duplicate protection when an event is processed more than once.
+
+Note:
+This test demonstrates successful event ingestion and duplicate prevention. Production deployment would also require monitoring, pending-message recovery, and secure application credentials.

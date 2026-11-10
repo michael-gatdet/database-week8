@@ -1,0 +1,25 @@
+DATABASE WEEK 8 - DAY 5
+POSTGRESQL BACKUP AND RESTORE VERIFICATION
+
+Original database: capstone
+Restored database: capstone_restore_test
+PostgreSQL version: 18.6
+
+Backup file:
+capstone_20261110_115318.dump
+
+Backup format:
+Custom format (pg_dump -Fc)
+
+Restore verification:
+- 14 tables found.
+- Total events: 50,016.
+- Total users: 7.
+- Materialized view rows: 23.
+- Event partitions: 4.
+- Restored database objects and data successfully.
+
+Conclusion:
+The PostgreSQL backup was successfully restored into a separate test database.
+The original capstone database was not modified.
+The backup and recovery test passed.
